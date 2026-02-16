@@ -14,3 +14,18 @@ int main(int argc,char *argv[]) {
 
     MPI_Finalize();
 }
+
+
+/*
+
+$ mpiexec -n 7 broadcast
+
+I, process 2, received 1002 of process 2
+I, process 3, received 1002 of process 2
+I, process 0, received 1002 of process 2
+I, process 4, received 1002 of process 2
+I, process 5, received 1002 of process 2
+I, process 6, received 1002 of process 2
+I, process 1, received 1002 of process 2
+
+*/

@@ -40,3 +40,18 @@ int main(int argc, char *argv[]) {
   printf("of process 2\n");
   MPI_Finalize();
 }
+
+/*
+
+$ mpiexec -n 7 scatter
+
+I, process 2 send my values array : 1001.000000 1002.000000 1003.000000 1004.000000 1005.000000 1006.000000 1007.000000 1008.000000 
+I, process 2, received 1003.000000 of process 2
+I, process 4, received 1005.000000 of process 2
+I, process 3, received 1004.000000 of process 2
+I, process 5, received 1006.000000 of process 2
+I, process 6, received 1007.000000 of process 2
+I, process 1, received 1002.000000 of process 2
+I, process 0, received 1001.000000 of process 2
+
+*/

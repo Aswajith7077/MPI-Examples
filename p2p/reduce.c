@@ -3,7 +3,7 @@
 int main(int argc, char *argv[]) {
 
   int rank, nb_procs, value, sum, i;
-  
+
   MPI_Init(&argc, &argv);
   MPI_Comm_size(MPI_COMM_WORLD, &nb_procs);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -20,3 +20,11 @@ int main(int argc, char *argv[]) {
 
   MPI_Finalize();
 }
+
+/*
+
+$ mpiexec -n 7 reduce
+
+I, process 0, have the global sum value 1021
+
+*/
