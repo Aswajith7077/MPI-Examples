@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
   int nb_values = 8, rank, nb_procs, block_length, i;
   float *values, *recvdata;
 
@@ -10,12 +11,11 @@ int main(int argc, char *argv[]) {
   MPI_Comm_size(MPI_COMM_WORLD, &nb_procs);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-
   block_length = nb_values / nb_procs;
   recvdata = (float *)malloc(block_length * sizeof(float));
 
-
-  if (rank == 2) {
+  if (rank == 2)
+  {
     values = (float *)malloc(nb_values * sizeof(float));
 
     for (i = 0; i < nb_values; i++)
@@ -23,14 +23,14 @@ int main(int argc, char *argv[]) {
 
     printf("I, process %d send my values array : ", rank);
 
-    for (i = 0; i < nb_values; i++) {
+    for (i = 0; i < nb_values; i++)
+    {
       printf("%f ", values[i]);
     }
     printf("\n");
   }
 
-  MPI_Scatter(values, block_length, MPI_FLOAT, recvdata, block_length,
-              MPI_FLOAT, 2, MPI_COMM_WORLD);
+  MPI_Scatter(values, block_length, MPI_FLOAT, recvdata, block_length, MPI_FLOAT, 2, MPI_COMM_WORLD);
 
   printf("I, process %d, received ", rank);
 
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
 
 $ mpiexec -n 7 scatter
 
-I, process 2 send my values array : 1001.000000 1002.000000 1003.000000 1004.000000 1005.000000 1006.000000 1007.000000 1008.000000 
+I, process 2 send my values array : 1001.000000 1002.000000 1003.000000 1004.000000 1005.000000 1006.000000 1007.000000 1008.000000
 I, process 2, received 1003.000000 of process 2
 I, process 4, received 1005.000000 of process 2
 I, process 3, received 1004.000000 of process 2

@@ -1,7 +1,8 @@
 #include <mpi.h>
 #include <stdio.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
   int rank, nb_procs, value, product, i;
 
   MPI_Init(&argc, &argv);
@@ -15,8 +16,7 @@ int main(int argc, char *argv[]) {
 
   MPI_Allreduce(&value, &product, 1, MPI_INT, MPI_PROD, MPI_COMM_WORLD);
 
-  printf("I, process %d, received the value of the global product %d\n", rank,
-         product);
+  printf("I, process %d, received the value of the global product %d\n", rank, product);
 
   MPI_Finalize();
 }
