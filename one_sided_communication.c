@@ -1,6 +1,67 @@
 #include <mpi.h>
 #include <stdio.h>
 
+/*
+
+int MPI_Win_create(
+    void *base,
+    MPI_Aint size,
+    int disp_unit,
+    MPI_Info info,
+    MPI_Comm comm,
+    MPI_Win *win
+);
+
+| Parameter   | Meaning                                      |
+| ----------- | -------------------------------------------- |
+| `base`      | Starting address of exposed memory           |
+| `size`      | Size of memory (bytes)                       |
+| `disp_unit` | Scaling factor for displacements             |
+| `info`      | Optimization hints (`MPI_INFO_NULL` usually) |
+| `comm`      | Communicator                                 |
+| `win`       | Output window object                         |
+
+
+
+int MPI_Put(
+    const void *origin_addr,
+    int origin_count,
+    MPI_Datatype origin_datatype,
+    int target_rank,
+    MPI_Aint target_disp,
+    int target_count,
+    MPI_Datatype target_datatype,
+    MPI_Win win
+);
+
+
+| Parameter         | Meaning                     |
+| ----------------- | --------------------------- |
+| `origin_addr`     | Local buffer                |
+| `origin_count`    | Number of elements to send  |
+| `origin_datatype` | Datatype of local data      |
+| `target_rank`     | Rank of remote process      |
+| `target_disp`     | Offset inside remote window |
+| `target_count`    | Number of remote elements   |
+| `target_datatype` | Datatype at remote side     |
+| `win`             | Window object               |
+
+
+int MPI_Win_fence(
+    int assert,
+    MPI_Win win
+);
+
+
+| Parameter | Meaning                        |
+| --------- | ------------------------------ |
+| `assert`  | Optimization hints (usually 0) |
+| `win`     | Window                         |
+
+
+
+*/
+
 int main(int argc, char *argv[])
 {
     MPI_Init(&argc, &argv);
