@@ -53,16 +53,25 @@ int main(int argc, char *argv[])
     else
     {
         int value, result;
-
         MPI_Recv(&value, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
         sleep(rank); // simulate different completion times
-
         result = value * rank;
-
         MPI_Send(&result, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
     }
 
     MPI_Finalize();
     return 0;
 }
+
+/*
+
+mpicc test_all.c -o test_all
+mpiexec -n 3 test_all
+
+Master doing work while waiting for all results...
+Still waiting...
+Still waiting...
+Master received: 10 and 40
+
+*/

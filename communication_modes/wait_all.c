@@ -45,12 +45,20 @@ int main(int argc, char *argv[])
         int value, result;
 
         MPI_Recv(&value, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
         result = value * rank; // simple processing
-
         MPI_Send(&result, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
     }
 
     MPI_Finalize();
     return 0;
 }
+
+/*
+
+mpicc wait_all.c -o wait_all
+mpiexec -n 3 wait_all
+
+Master waiting for all results...
+Master received: 10 and 40
+
+*/
