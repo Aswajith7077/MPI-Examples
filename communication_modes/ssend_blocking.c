@@ -33,7 +33,6 @@ int main(int argc, char *argv[])
         int sum = 0;
 
         printf("Worker sleeping before receive...\n");
-        // MPI_Barrier(MPI_COMM_WORLD); // just to control output timing
 
         printf("Worker calling MPI_Recv...\n");
         MPI_Recv(data, 4, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
