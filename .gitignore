@@ -1,8 +1,8 @@
 # Ignore everything
-*
+
 # But exclude directories from being ignored (so git can traverse them)
-!*/
+
 # Exclude .c files from being ignored
 !*.c
 # Exclude .gitignore itself
-!.gitignore
+!.gitignor
